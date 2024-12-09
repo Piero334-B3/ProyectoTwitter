@@ -1,0 +1,125 @@
+/* Restablecer márgenes y rellenos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo del cuerpo */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #15202B; /* Fondo oscuro */
+    color: #E1E8ED; /* Texto claro */
+}
+
+/* Contenedor principal */
+.container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Estilo del sidebar izquierdo */
+.sidebar {
+    width: 20%;
+    padding: 20px;
+    background-color: #192734; /* Fondo oscuro para el sidebar */
+    height: 100vh;
+}
+
+.logo {
+    width: 50px;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #E1E8ED; /* Texto claro */
+    font-size: 18px;
+}
+
+.sidebar ul li a:hover {
+    color: #1DA1F2; /* Efecto hover en azul claro */
+}
+
+/* Botón de Tweet en sidebar */
+.tweet-btn {
+    background-color: #1DA1F2; /* Celeste */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.tweet-btn:hover {
+    background-color: #0d8ae0; /* Efecto hover */
+}
+
+/* Estilo del área de feed */
+.feed {
+    width: 55%;
+    padding: 20px;
+    background-color: #192734; /* Fondo oscuro para el feed */
+    color: #E1E8ED;
+}
+
+/* Tweet box */
+.tweet-box {
+    margin-bottom: 20px;
+}
+
+.tweet-box textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    border: 1px solid #38444D; /* Bordes oscuros */
+    border-radius: 10px;
+    background-color: #22303C; /* Fondo oscuro para el textarea */
+    color: #E1E8ED;
+    resize: none;
+}
+
+/* Estilo de un tweet individual */
+.tweet {
+    padding: 10px;
+    border-bottom: 1px solid #38444D; /* Bordes oscuros entre tweets */
+}
+
+/* Sidebar derecho de tendencias */
+.trends {
+    width: 25%;
+    padding: 20px;
+    background-color: #192734; /* Fondo oscuro */
+    color: #E1E8ED;
+}
+
+.trends h2 {
+    margin-bottom: 10px;
+}
+
+.trends ul {
+    list-style-type: none;
+}
+
+.trends ul li {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.trends ul li:hover {
+    color: #1DA1F2; /* Efecto hover en azul claro */
+}
+

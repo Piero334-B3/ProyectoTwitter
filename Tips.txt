@@ -1,0 +1,12 @@
+para colocar un css:
+<link rel="stylesheet" href="main.css">
+
+para colocar un css de otra carpeta:
+<link rel="stylesheet" href="/assets/main.css">
+<link rel="stylesheet" href="assets/main.css">
+
+para colocar un css desde otra carpeta dentro de otra carpeta: (assets: tiene la carpeta html y css)
+<link rel="stylesheet" href="../CSS/main.css">
+
+para colocar un css desde otra carpeta dentro de otra carpeta, y el entrelazar desde una carpeta fuera de estas:
+<link rel="stylesheet" href="../../main.css">

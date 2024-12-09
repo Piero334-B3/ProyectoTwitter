@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter</title>
+    <link rel="stylesheet" href="../CSS/registro.css">
+    <link rel="icon" href="../images/twitterX.png">
+    <script src="../JavaScript/registro.js" defer></script>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Bienvenido a Twitter</h1>
+
+        <!-- Formulario de Inicio de Sesión -->
+        <div class="form-container">
+            <input type="email" placeholder="Correo electrónico" id="email" required>
+            <div class="password-container">
+                <input type="password" placeholder="Contraseña" id="password" required>
+                <span class="toggle-password" onclick="togglePassword()">👁‍🗨</span>
+            </div>
+            <button class="login-btn" onclick="iniciarSesion()">Iniciar Sesión</button>
+
+            <p>¿Olvidaste la contraseña? <a href="#" id="recuperar-cuenta">Recuperar cuenta</a></p>
+            <button class="login-btn" onclick="registrarse()">Registrarse</button>
+        </div>
+    </div>
+
+    <!-- Primer Modal de Registro (Correo y Contraseña) -->
+    <div class="modal" id="modalRegistro">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2 class="modalregistro">Registrarse</h2>
+            <input type="email" placeholder="Correo electrónico" id="modalEmail" required>
+            <div class="password-container">
+                <input type="password" placeholder="Contraseña" id="modalPassword" required>
+                <span class="toggle-password" onclick="toggleModalPassword()">👁️</span>
+            </div>
+            <button class="register-btn" onclick="abrirModalDatosPersonales()">Registrar</button>
+        </div>
+    </div>
+
+    <!-- Segundo Modal (Nombre, Apellido, Fecha de Nacimiento) -->
+    <div class="modal" id="modalDatosPersonales">
+        <div class="modal-content">
+            <span class="close" id="closeDatos">&times;</span>
+            <h2 class="modalregistro">Datos Personales</h2>
+            <input type="text" placeholder="Nombre" id="modalNombre" required>
+            <input type="text" placeholder="Apellido (opcional)" id="modalApellido">
+            <label for="fechaNacimiento" class="textfecha" style="color: white;">Fecha de nacimiento:</label>
+            <input type="date" id="fechaNacimiento" required>
+            <div class="modal-buttons">
+                <button class="back-btn" onclick="volverAlModalRegistro()">Atrás</button>
+                <button class="next-btn" onclick="validarEdad()">Siguiente</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tercer Modal (Nombre de Usuario e Imagen de Perfil) -->
+    <div class="modal" id="modalUsuario">
+        <div class="modal-content">
+            <span class="close" id="closeUsuario">&times;</span>
+            <h2 class="modalregistro">Nombre de Usuario</h2>
+            <div class="image-upload">
+                <label for="profileImage" class="upload-circle">+</label>
+                <input type="file" id="profileImage" style="display: none;" accept="image/*">
+            </div>
+            <input type="text" placeholder="Nombre de usuario" id="modalUsername" required>
+            <div class="modal-buttons">
+                <button class="register-btn back-btn" onclick="volverAlModalDatosPersonales()">Atrás</button>
+                <button class="register-btn" onclick="finalizarRegistro()">Registrarse</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ventana Modal de Recuperación de Cuenta -->
+    <div class="modal" id="modalRecuperacion">
+        <div class="modal-content">
+            <span class="close" id="closeRecuperacion">&times;</span>
+            <h2 class="modalrecuperacion">Recuperar Cuenta</h2>
+            <input type="email" placeholder="Correo electrónico" id="recuperarEmail" required>
+            <button class="recover-btn" onclick="recuperarCuenta()">Recuperar</button>
+        </div>
+    </div>
+</body>
+</html>
