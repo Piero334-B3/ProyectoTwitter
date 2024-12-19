@@ -1,0 +1,19 @@
+*/Verificar que el correo electronico exista/*
+
+class Users::SessionsController < Devise::SessionsController
+  respond_to :json
+
+  private
+
+  def respond_with(resource, _opts = {})
+    if current_user
+      render json: { message: "Signed in successfully!" }, status: :ok
+    else
+      render json: { message: "Invalid Email or password." }, status: :unauthorized
+    end
+  end
+
+  def respond_to_on_destroy
+    render json: { message: "Signed out successfully!" }, status: :ok
+  end
+end

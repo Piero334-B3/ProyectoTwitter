@@ -1,0 +1,31 @@
+*/testear funcionalidad para seguir a personas/*
+
+require 'rails_helper'
+
+RSpec.describe "Follow Feature", type: :request do
+  let!(:user1) { User.create(email: "user1@example.com", password: "password123") }
+  let!(:user2) { User.create(email: "user2@example.com", password: "password123") }
+
+  describe "POST /follow" do
+    context "when a user follows another user" do
+      it "allows the user to follow successfully" do
+        post "/follow", params: { follower_id: user1.id, followed_id: user2.id }
+
+        expect(response).to have_http_status(:ok)
+        expect(JSON.parse(response.body)["message"]).to eq("Followed successfully!")
+        expect(user1.following).to include(user2)
+      end
+    end
+
+    context "when a user tries to follow an already followed user" do
+      it "does not allow duplicate follows" do
+        user1.following << user2
+
+        post "/follow", params: { follower_id: user1.id, followed_id: user2.id }
+
+        expect(response).to have_http_status(:unprocessable_entity)
+        expect(JSON.parse(response.body)["message"]).to eq("You are already following this user.")
+      end
+    end
+  end
+end

@@ -1,0 +1,25 @@
+*/subir posts de manera correcta/*
+
+require 'rails_helper'
+
+RSpec.describe Post, type: :model do
+  # Prueba: Validación de un post válido
+  it "is valid with valid attributes" do
+    post = Post.new(content: "This is a valid post")
+    expect(post).to be_valid
+  end
+
+  # Prueba: Validación de un post sin contenido
+  it "is not valid without content" do
+    post = Post.new(content: nil)
+    expect(post).not_to be_valid
+    expect(post.errors[:content]).to include("can't be blank")
+  end
+
+  # Prueba: Validación de longitud mínima del contenido
+  it "is not valid if content is too short" do
+    post = Post.new(content: "Hi")
+    expect(post).not_to be_valid
+    expect(post.errors[:content]).to include("is too short (minimum is 5 characters)")
+  end
+end

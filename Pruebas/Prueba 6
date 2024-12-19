@@ -1,0 +1,31 @@
+*/Probar la funcionalidad de Retwittear*/
+
+require 'rails_helper'
+
+RSpec.describe "Retweet Feature", type: :request do
+  let!(:user) { User.create(email: "user@example.com", password: "password123") }
+  let!(:original_post) { Post.create(user: user, content: "This is the original post") }
+
+  describe "POST /retweet" do
+    context "when a user retweets a post" do
+      it "allows the user to retweet successfully" do
+        post "/retweet", params: { user_id: user.id, post_id: original_post.id }
+
+        expect(response).to have_http_status(:ok)
+        expect(JSON.parse(response.body)["message"]).to eq("Retweeted successfully!")
+        expect(original_post.retweets.count).to eq(1)
+      end
+    end
+
+    context "when a user tries to retweet the same post multiple times" do
+      it "does not allow duplicate retweets" do
+        Post.create(user: user, original_post: original_post) # Simulate an existing retweet
+
+        post "/retweet", params: { user_id: user.id, post_id: original_post.id }
+
+        expect(response).to have_http_status(:unprocessable_entity)
+        expect(JSON.parse(response.body)["message"]).to eq("You have already retweeted this post.")
+      end
+    end
+  end
+end

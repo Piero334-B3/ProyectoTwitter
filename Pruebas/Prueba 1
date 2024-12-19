@@ -1,0 +1,24 @@
+*/pruebas de like a los posts/*
+
+require 'rails_helper'
+
+RSpec.describe Like, type: :model do
+  let(:post) { Post.create(content: "This is a test post") }
+  
+  it "allows a user to like a post" do
+    like = post.likes.create(user_id: 1)
+    expect(post.likes.count).to eq(1)
+  end
+
+  it "prevents a user from liking the same post twice" do
+    post.likes.create(user_id: 1)
+    duplicate_like = post.likes.build(user_id: 1)
+    expect(duplicate_like.valid?).to be_falsey
+  end
+
+  it "allows multiple users to like the same post" do
+    post.likes.create(user_id: 1)
+    post.likes.create(user_id: 2)
+    expect(post.likes.count).to eq(2)
+  end
+end
